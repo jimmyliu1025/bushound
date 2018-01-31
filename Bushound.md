@@ -87,8 +87,8 @@ Transaction指USB資料的傳輸，大部分的傳輸包含了三種封包，<fo
 
 Bus Hound 解讀
 ----
-###基本參數
-<a href="https://imgbb.com/"><img src="https://image.ibb.co/mdbwjR/12.png" alt="12" border="0"></a>
+###基本參數<br>
+<a href="https://imgbb.com/"><img src="https://image.ibb.co/mdbwjR/12.png" alt="12" border="0"></a><br>
 
 Class(群組代碼):&nbsp;&nbsp;&nbsp;&nbsp;			代表interface Class 0x08代表mess storage
 <br>
@@ -108,7 +108,7 @@ Rep(命令重複發布數):&nbsp;&nbsp;&nbsp;&nbsp;		重複數
 
 
 
-###CMD 1:Host 對 Address 0 發送 GetDescriptor(Device Descriptor) 的請求
+###CMD 1:Host 對 Address 0 發送 GetDescriptor(Device Descriptor) 的請求<br>
 
 <a href="https://ibb.co/fuMXr6"><img src="https://preview.ibb.co/hhO1jR/1.png" alt="1" border="0"></a>
 
@@ -133,7 +133,7 @@ wLength: &nbsp;&nbsp;&nbsp;&nbsp;(Byte 6-7)
 代表Device要回傳多少Data回來(可小於)
 
 
-###CMD 1 Phase 2:
+###CMD 1 Phase 2:<br>
 <a href="https://ibb.co/gwOsPR"><img src="https://preview.ibb.co/mxJRjR/3.png" alt="3" border="0"></a>
 
 Byte 0						&nbsp;&nbsp;&nbsp;&nbsp;Descriptor長度，0x12個Byte
@@ -165,12 +165,12 @@ Byte 16						&nbsp;&nbsp;&nbsp;&nbsp;表 SN號，03
 Byte 17						&nbsp;&nbsp;&nbsp;&nbsp;Number of possible configration，01
 <br>
 
-###CMD 2 Phase 1: Host 發送 GetDescriptor(Config) 的請求
+###CMD 2 Phase 1: Host 發送 GetDescriptor(Config) 的請求<br>
 <a href="https://ibb.co/itOnr6"><img src="https://preview.ibb.co/iGXfB6/4.png" alt="4" border="0"></a><br>
 Byte 3						&nbsp;&nbsp;&nbsp;&nbsp;Descriptor Index  02表示 Configuration Descriptor
 <br>
 
-###CMD 2 Phase 2:
+###CMD 2 Phase 2:<br>
 <a href="https://ibb.co/itOnr6"><img src="https://preview.ibb.co/iGXfB6/4.png" alt="4" border="0"></a><br>
 Byte 0						&nbsp;&nbsp;&nbsp;&nbsp;Descriptor長度，0x09個Byte<br>
 Byte 1						&nbsp;&nbsp;&nbsp;&nbsp;Descriptor種類，02代表Configuration Descriptor
@@ -183,7 +183,7 @@ Byte 6						&nbsp;&nbsp;&nbsp;&nbsp;表此 config 的String Descriptor 編號，
 Byte 7						&nbsp;&nbsp;&nbsp;&nbsp;表此配置的屬性，(ex. Bit6=1，代表從Usb Bus 供電)<br>
 Byte 8						&nbsp;&nbsp;&nbsp;&nbsp;表所用電流，單位為2mA，0x64，200mA<br>
 
-###CMD 3 Phase 1: Host 發送 GetDescriptor(Config) 的請求
+###CMD 3 Phase 1: Host 發送 GetDescriptor(Config) 的請求<br>
 <a href="https://ibb.co/haEtW6"><img src="https://preview.ibb.co/mTRU4R/5.png" alt="5" border="0"></a>
 ###CMD 3 Phase 2: 
 第一組為 Configuration，共 9 Byte，而 0x02 代表 組態描述元(Configuration Descriptor)<br>
@@ -211,42 +211,42 @@ Byte 6						host 間隔多少時間來 polling device，0x00表不用<br><br>
 第四組：07 05 02 02 00 02 00<br>
 Byte 2	&nbsp;&nbsp;&nbsp;&nbsp;					EndPoint Address，0x02，00000010，(b7:0 out, 0010 EP2)<br><br><br>
 
-###CMD 4 CMD 5: Host 下 Get String Descriptor  
+###CMD 4 CMD 5: Host 下 Get String Descriptor  <br>
 <a href="https://ibb.co/b8XVB6"><img src="https://preview.ibb.co/gQuz4R/6.png" alt="6" border="0"></a><br>
 Byte 2	&nbsp;&nbsp;&nbsp;&nbsp;					index，這裡的 0x00，代表只取LanguageID<br>
 Byte 3	&nbsp;&nbsp;&nbsp;&nbsp;					種類，03代表 String descriptor <br>
 Byte 4-5&nbsp;&nbsp;&nbsp;&nbsp;						0x00，代表Language ID，表沒有特別的ID <br>
 
-###CMD 5 Phase 2:
+###CMD 5 Phase 2:<br>
 Byte 0&nbsp;&nbsp;&nbsp;&nbsp;						Length，0x04 長度為 4<br>
 Byte 1	&nbsp;&nbsp;&nbsp;&nbsp;					種類，03代表 String descriptor<br>
 Byte 2-3&nbsp;&nbsp;&nbsp;&nbsp;						表Language ID = 0x0409，為 English (United States)<br>
 
-###CMD 6 CMD 7:
+###CMD 6 CMD 7:<br>
 <a href="https://ibb.co/ktn8ym"><img src="https://preview.ibb.co/d4q6jR/7.png" alt="7" border="0"></a>
 ###CMD 7 Phase 1:
 Byte 2	&nbsp;&nbsp;&nbsp;&nbsp;					index，這裡的 0x03，代表只Product String<br>
 Byte 4-5&nbsp;&nbsp;&nbsp;&nbsp;						0x0409，代表Language ID<br>
-###CMD 7 Phase 2:
+###CMD 7 Phase 2:<br>
 依照ASCII翻譯，為Host端的Device name<br>
 
-###CMD 8:
+###CMD 8:<br>
 <a href="https://ibb.co/eS5W16"><img src="https://preview.ibb.co/dnn0uR/8.png" alt="8" border="0"></a><br>
 Byte 0	&nbsp;&nbsp;&nbsp;&nbsp;					0x00，bit7 0 – Host to Device (OUT)<br>
 Byte 1	&nbsp;&nbsp;&nbsp;&nbsp;					0x09，設定configuration<br>
 
-###CMD 9:
+###CMD 9:<br>
 Byte 0	&nbsp;&nbsp;&nbsp;&nbsp;					0x01，bit7 0 – Host to Device (OUT)，Recipient 1 - Endpoint<br>
 Byte 1	&nbsp;&nbsp;&nbsp;&nbsp;					0x0b，設定interface<br>
 
-###CMD 10: 確定設備之邏輯單元
+###CMD 10: 確定設備之邏輯單元<br>
  
 Byte 0	&nbsp;&nbsp;&nbsp;&nbsp;					0xa1，bit7 1 – Device to Host (IN)，bit5 1 - Request -> Class<br>
 Byte 1	&nbsp;&nbsp;&nbsp;&nbsp;					0xfe，field set to 254<br>
 ###CMD 10 Phase 2:
 Byte 0	&nbsp;&nbsp;&nbsp;&nbsp;					0x00，僅有一個邏輯單元<br>
 
-###CMD 11: Host傳送CBW包 (Command Block Wrap)
+###CMD 11: Host傳送CBW包 (Command Block Wrap)<br>
 <a href="https://ibb.co/i81bZR"><img src="https://preview.ibb.co/jQAEM6/9.png" alt="9" border="0"></a><br>
 <a href="https://ibb.co/jgMbZR"><img src="https://preview.ibb.co/b66og6/10.jpg" alt="10" border="0"></a><br>
 
@@ -259,7 +259,7 @@ bCBWCBLength:	&nbsp;&nbsp;&nbsp;&nbsp;				其值是0x06，也就是說這裡接�
 CBWCB:&nbsp;&nbsp;&nbsp;&nbsp;
 SCSI命令就是Inquiry : (第一个是0x12就是SCSI協議裡面定義的Inquiry命令) 12 00 00 00 24 00<br>
 
-###CMD 12: Slave端回覆36筆資料
+###CMD 12: Slave端回覆36筆資料<br>
 <a href="https://ibb.co/j6ciim"><img src="https://preview.ibb.co/epFEpR/37.png" alt="37" border="0"></a><br /><a target='_blank' href='https://zh-tw.imgbb.com/'>free photo hosting</a><br />
 <a href="https://ibb.co/kQHB16"><img src="https://preview.ibb.co/hL64M6/12.png" alt="12" border="0"></a><br>
 RBM:		&nbsp;&nbsp;&nbsp;&nbsp;					裝置是否支援removable media : 1 -> is removable<br>
@@ -273,7 +273,7 @@ Linked:	&nbsp;&nbsp;&nbsp;&nbsp;					是否支援指令連結<br>
 CmdQue:	&nbsp;&nbsp;&nbsp;&nbsp;					是否支援指令佇列<br>
 SftRe:	&nbsp;&nbsp;&nbsp;&nbsp;						是否支援軟體重置<br>
 
-###CMD 13: 傳送CSW回Host (Command State Wrap)
+###CMD 13: 傳送CSW回Host (Command State Wrap)<br>
 <a href="https://ibb.co/jXnTg6"><img src="https://preview.ibb.co/cLgX8m/13.png" alt="13" border="0"></a><br>
 <a href="https://imgbb.com/"><img src="https://image.ibb.co/k0GJER/14.png" alt="14" border="0"></a>
 <br>
@@ -332,12 +332,12 @@ dCSWDataResidue: 				還需傳送之數據<br>
 bCSWStatus:					指示命令的執行狀態，如正確即返回0<br>
 
 
-###CMD24、25、26: 
+###CMD24、25、26: <br>
 <a href="https://ibb.co/b3oC8m"><img src="https://preview.ibb.co/dEyZM6/22.png" alt="22" border="0"></a><br>
 HOST希望執行0x23指令，(0x23 SCSI Read Format Capacity命令) 23 00 00 00 00 00 00 00 fc 00 
 因沒有儲存媒介，因此返回最大格式化容量<br>
 
-###CMD25:
+###CMD25:<br>
 Bit 3:&nbsp;&nbsp;&nbsp;&nbsp; 0x08			容量列表長度為 8byte<br>
 Bit 4-7:&nbsp;&nbsp;&nbsp;&nbsp;			sector數				0xd0e600	= 13690368<br>
 Bit 9-11:&nbsp;&nbsp;&nbsp;&nbsp;			每sector的byte數		0x200	= 512<br>
