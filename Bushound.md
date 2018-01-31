@@ -184,7 +184,7 @@ Byte 7						&nbsp;&nbsp;&nbsp;&nbsp;表此配置的屬性，(ex. Bit6=1，代表
 Byte 8						&nbsp;&nbsp;&nbsp;&nbsp;表所用電流，單位為2mA，0x64，200mA<br>
 
 ###CMD 3 Phase 1: Host 發送 GetDescriptor(Config) 的請求<br>
-<a href="https://ibb.co/haEtW6"><img src="https://preview.ibb.co/mTRU4R/5.png" alt="5" border="0"></a>
+<a href="https://ibb.co/haEtW6"><img src="https://preview.ibb.co/mTRU4R/5.png" alt="5" border="0"></a><br>
 ###CMD 3 Phase 2: <br>
 第一組為 Configuration，共 9 Byte，而 0x02 代表 組態描述元(Configuration Descriptor)<br>
 第二組為 Interface ，共 9 Byte，而 0x04 代表 介面描述元(Interface Descriptor)<br>
@@ -223,7 +223,7 @@ Byte 1	&nbsp;&nbsp;&nbsp;&nbsp;					種類，03代表 String descriptor<br>
 Byte 2-3&nbsp;&nbsp;&nbsp;&nbsp;						表Language ID = 0x0409，為 English (United States)<br>
 
 ###CMD 6 CMD 7:<br>
-<a href="https://ibb.co/ktn8ym"><img src="https://preview.ibb.co/d4q6jR/7.png" alt="7" border="0"></a>
+<a href="https://ibb.co/ktn8ym"><img src="https://preview.ibb.co/d4q6jR/7.png" alt="7" border="0"></a><br>
 ###CMD 7 Phase 1:<br>
 Byte 2	&nbsp;&nbsp;&nbsp;&nbsp;					index，這裡的 0x03，代表只Product String<br>
 Byte 4-5&nbsp;&nbsp;&nbsp;&nbsp;						0x0409，代表Language ID<br>
