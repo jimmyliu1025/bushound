@@ -4,7 +4,7 @@
 USB運作模式
 -------
 
-&nbsp;&nbsp;&nbsp;&nbsp;位於PC上的USB裝置稱為 USB Host，上面可外接數個裝置(USB Device)，而Host會主導整個USB結構的通訊。
+&nbsp;&nbsp;&nbsp;&nbsp;位於PC上的USB裝置稱為 USB Host，上面可外接數個裝置(USB Device)，而Host會主導整個USB結構的通訊。<br>
 方法為<font color="red">輪流詢問<font color="black">所有Device以檢查是否有裝置需要傳送資料，所有Device都須等待Host的命令，Host同意後Device才可開始傳送資料。
 
 <a href="https://imgbb.com/"><img src="https://image.ibb.co/htvmJm/1.png" alt="1" border="0"></a>
